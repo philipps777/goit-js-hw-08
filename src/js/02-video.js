@@ -13,12 +13,6 @@ const saveCurrentTimeToLocalStorage = function (time) {
   
 }
 
-const loadCurrentTimeFromLocalStorage = function () {
-    const data = localStorage.getItem(LS);    
-    return JSON.parse(data);
- 
-};
-
 const updateCurrentTimeThrottled = throttle(saveCurrentTimeToLocalStorage, 1000);
 
 
@@ -32,7 +26,8 @@ player.on('timeupdate', onPlay);
 const savedTime = JSON.parse(localStorage.getItem(LS));
 
 if (savedTime) {
-  player.setCurrentTime(savedTime).catch(function(error) {
+  player.setCurrentTime(savedTime)
+  .catch(function(error) {
     switch (error.name) {
       case 'RangeError':
         
