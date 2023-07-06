@@ -1,39 +1,30 @@
 
 import throttle from 'lodash.throttle';
 
-
 const formEl = document.querySelector('.feedback-form');
-
-
 
 const LS = 'feedback-form-state';
 
 let formData = {};
 
 const saveFormState = (e) => {
-  formData[e.target.name] = e.target.value.trim();
- 
+  formData[e.target.name] = e.target.value.trim(); 
   localStorage.setItem(LS, JSON.stringify(formData));
 };
 
 
 
 const resetFormState = () => {
-  localStorage.removeItem(LS);
-  formEl.reset();
- 
+  localStorage.removeItem(LS);  
 };
 
 
 const handleFormInput = throttle(saveFormState, 500);
 
-
-form.addEventListener('input', handleFormInput);
-form.addEventListener('submit', (event) => {
+formEl.addEventListener('submit', (event) => {
   event.preventDefault();
   console.log(formData);
-  formData = {};
- 
+  formData = {}; 
   resetFormState();
 });
 
