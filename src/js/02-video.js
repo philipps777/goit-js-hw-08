@@ -23,7 +23,7 @@ const onPlay = function(event) {
 
 player.on('timeupdate', onPlay);
 
-const savedTime = JSON.parse(localStorage.getItem(LS));
+const savedTime = Number(localStorage.getItem(LS));
 
 if (savedTime) {
   player.setCurrentTime(savedTime)
@@ -39,4 +39,4 @@ if (savedTime) {
 }
 
 
-player.play();
+
